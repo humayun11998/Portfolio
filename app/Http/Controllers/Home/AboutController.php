@@ -54,9 +54,6 @@ class AboutController extends Controller
             'message' => 'About Page Updated with Image Successfully',
             'alert-type' => 'success'
             ];
-
-            return redirect()->back()->with($notification);
-
         }else{
 
             About::findOrFail($aboutId)->update([
@@ -71,8 +68,10 @@ class AboutController extends Controller
             'alert-type' => 'success'
             ];
 
-            return redirect()->back()->with($notification);
         }
+        
+        return redirect()->back()->with($notification);
+
      }
 
 
