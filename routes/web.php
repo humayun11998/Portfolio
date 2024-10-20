@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Home\BlogCategoryController;
+use App\Http\Controllers\Home\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +42,7 @@ Route::controller(HomeSliderController::class)->group(function() {
     Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
 });
 
+
 // About Page All Routes
 Route::controller(AboutController::class)->group(function() {
     Route::get('/about/page', 'AboutPage')->name('about.page');
@@ -66,6 +69,38 @@ Route::controller(PortfolioController::class)->group(function() {
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
     Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
 });
+
+// Blog Category All Routes
+Route::controller(BlogCategoryController::class)->group(function() {
+    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+    Route::get('/add/blog/category', 'AddBlogCategory')->name('add.blog.category');
+    Route::get('/edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
+    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+
+
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+});
+
+
+// Blog Page All Routes
+Route::controller(BlogController::class)->group(function() {
+    Route::get('/all/blog', 'AllBlog')->name('all.blog');
+    Route::get('/add/blog', 'AddBlog')->name('add.blog');
+    Route::get('/edit/blog/{id}', 'EditBlog')->name('edit.blog');
+
+
+    Route::post('/store/blog', 'StoreBlog')->name('store.blog');
+    Route::post('/update/blog', 'UpdateBlog')->name('update.blog');
+    Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
+
+
+    Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
+    Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.post');
+
+    Route::get('/blog', 'HomeBlog')->name('home.blog');
+});
+
 
 
 
